@@ -1,6 +1,6 @@
 resource "azurerm_network_interface" "nic" {
   name                = "book-nic"
-  location            = "West Europe"
+  location            = "australiaeast"
   resource_group_name = azurerm_resource_group.rg.name
 
   ip_configuration {
@@ -13,23 +13,23 @@ resource "azurerm_network_interface" "nic" {
 
 resource "azurerm_public_ip" "pip" {
   name                = "book-ip"
-  location            = "West Europe"
+  location            = "australiaeast"
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Dynamic"
-  domain_name_label   = "bookdevops"
+  domain_name_label   = "bookdevopsrich"
 }
 
 resource "azurerm_storage_account" "stor" {
   name                     = "bookstorpackt123"
-  location                 = "West Europe"
+  location                 = "australiaeast"
   resource_group_name      = azurerm_resource_group.rg.name
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
 
 resource "azurerm_virtual_machine" "vm" {
-  name                  = "bookvm"
-  location              = "West Europe"
+  name                  = "bookvmrich"
+  location              = "australiaeast"
   resource_group_name   = azurerm_resource_group.rg.name
   vm_size               = "Standard_DS1_v2"
   network_interface_ids = [azurerm_network_interface.nic.id]
